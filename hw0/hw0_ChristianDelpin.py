@@ -12,12 +12,12 @@ Submission Date: [MM-DD-YYYY]
 # TODO: Check if need to define every function for every problem then call via main(). For now, using.
 
 def planetary_cargo_weight_checker():
-    # TODO: Change below to not use dict
-    planetary_weights = {
-        "earth": 500,
-        "moon": 300,
-        "mars": 250
-    }
+
+    # planetary_weights = {
+    #     "earth": 500,
+    #     "moon": 300,
+    #     "mars": 250
+    # }
 
     destination = input("What planet is this cargo headed to: ").lower() # TODO: See if input validation is necessary.
     qty = int(input("How many items are in your shipment: ")) # TODO: See if input validation is necessary.
@@ -29,10 +29,24 @@ def planetary_cargo_weight_checker():
         total_weight += float(input(f"Item weight in kg: ")) # TODO: See if input validation is necessary.
         i += 1
     
-    if total_weight <= planetary_weights[destination]:
-        print("OK")
-    else:
-        print("OVER LIMIT")
+    msg = "OVER LIMIT"
+    if destination == "earth":
+        if total_weight <= 500:
+            msg = "OK"
+    elif destination == "moon":
+        if total_weight <= 300:
+            msg = "OK"
+    elif destination == "mars": 
+        if total_weight <= 250:
+            msg = "OK"
+
+    print(msg)
+
+
+    # if total_weight <= planetary_weights[destination]:
+    #     print("OK")
+    # else:
+    #     print("OVER LIMIT")
 
 
 # Problem 2: Astronaut Training Fatigue Tracker
@@ -57,7 +71,7 @@ def astronaut_training_fatigue_tracker():
 
 
 def main():    
-    #planetary_cargo_weight_checker()
+    planetary_cargo_weight_checker()
     astronaut_training_fatigue_tracker()
 
 if __name__ == "__main__":

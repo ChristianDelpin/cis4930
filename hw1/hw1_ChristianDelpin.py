@@ -4,7 +4,7 @@ Homework : 1
 Student Name: Christian Delpin
 Student ID: CAD23J
 Section: 3
-Submission Date: [02-0D-2026]
+Submission Date: [MM-DD-YYYY]
 """
 
 # Problem 1: Campus WiFi Access Log Analyzer
@@ -166,9 +166,9 @@ def configurable_data_processor():
     import data_utils as data
 
     readings = [1.2, 1.8, 2.1, 10.0, 1.9, 2.0, 1.7]  # 10.0 is outlier
-    #cleaned = data.process_sensor_data(readings, remove_outliers=True, smooth=True, scale="normalize")
+    cleaned = data.process_sensor_data(readings, remove_outliers=True, smooth=True, scale="normalize")
     #cleaned = data.process_sensor_data(readings, remove_outliers=True, smooth=True, scale="standardize")
-    cleaned = data.process_sensor_data(readings, remove_outliers=False, smooth=True)
+    #cleaned = data.process_sensor_data(readings, remove_outliers=False, smooth=True)
     print("Cleaned:", cleaned)
 
 # Problem 5: Library Book Checkout System
@@ -176,14 +176,23 @@ def configurable_data_processor():
 # books have due dates associated with them
 def library_book_checkout_system():
     import library as lib
+    from datetime import date
+    inventory = [
+        {"title": "Book A", "status": "checked out", "due_date": date(2026, 3, 1)},
+        {"title": "Book B", "status": "available", "due_date": None},
+        {"title": "Book C", "status": "overdue", "due_date": date(2026, 1, 15)},]
+    lib.print_inventory(inventory)
+    lib.format_status(inventory[0])
+    lib.days_overdue(inventory[2]['due_date'], date.today())
 
+    print(date.today())
 
 def main():
-    #campus_wifi()
-    #university_course_planner()
-    #cafeteria_menu()
+    campus_wifi()
+    university_course_planner()
+    cafeteria_menu()
     configurable_data_processor()
-    #library_book_checkout_system()
+    library_book_checkout_system()
 
 
 if __name__ == "__main__":

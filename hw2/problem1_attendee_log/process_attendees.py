@@ -19,7 +19,7 @@ class Logger:
         self.log_file = open(config['log_file'], 'a')
     
     def log(self, message, log_type="PROCESS"):
-        self.log_file.write(f"[{datetime.datetime.now()}] {log_type}: {message}\n")
+        self.log_file.write(f"[{datetime.datetime.now().isoformat(timespec='seconds')}] {log_type}: {message}\n")
         self.log_file.flush()
 
 logger = Logger()
